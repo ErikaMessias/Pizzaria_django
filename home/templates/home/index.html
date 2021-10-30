@@ -1,0 +1,46 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pizzaria</title>
+</head>
+<body style="background-color: rgb(255,242,223)">
+{% include 'menu.html' %}
+{% include 'carrossel.html' %}
+
+<br>
+<div style="margin-right:260px" class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Acesse nossos produtos.</h1>
+    </div>
+</div>
+<br>
+<div class="mt-2">
+       {% include 'msg.html' %}
+    </div>
+    <div style="margin-left:140px" class="row">
+        {% if dados %}
+        {% for linhas in dados %}
+        <div class="col-md-6 col-sm-12 col-lg-4">
+            {% if linhas.foto %}
+            <img class="img-fluid" src="{{linhas.foto.url}}" alt="">
+            {% endif%}
+            <p>
+            <p>
+                {{linhas.titulo}} <br> {{linhas.descricao}},
+            </p>
+      <a class="btn btn-dark mt-2" href="{% url 'pizzaria' linhas.id %}">Selecionar 😋</a>
+            </p>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+    
+    {% include 'footer.html' %}
+</body>
+</html>

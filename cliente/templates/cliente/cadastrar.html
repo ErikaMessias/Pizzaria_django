@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cadastrar</title>
+  </head>
+
+  <body style="background-color: rgb(255, 242, 223)">
+    {% include 'menu.html' %}
+    <div
+      class="container"
+      style="
+        max-width: 600px;
+        min-height: 500px;
+        border: solid 1px #ccc;
+        color: #fff;
+        background-color: #9d0c00;
+        border-radius: 8px;
+        padding: 2rem;
+        margin-top: 8rem;
+      "
+    >
+      <h2>Cadastro</h2>
+      {% include 'msg.html' %}
+      <form
+        style="
+          width: 100%;
+          color: white;
+          background-color: #9d0c00;
+          border-radius: 8px;
+          margin-top: 25px;
+        "
+        action="{% url 'cadastrar' %}"
+        method="post"
+      >
+        {% csrf_token %}
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            name="email"
+            value="{{ request.POST.email }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Usuário</label>
+          <input
+            type="text"
+            class="form-control"
+            name="usuario"
+            value="{{ request.POST.usuario }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nome"
+            value="{{ request.POST.nome }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Sobre nome</label>
+          <input
+            type="text"
+            class="form-control"
+            name="sobrenome"
+            value="{{ request.POST.sobrenome }}"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Senha</label>
+          <input type="password" class="form-control" name="senha1" />
+        </div>
+        <button
+          style="
+            width: 60%;
+            color: #fff;
+            margin-left: 100px;
+            border: solid 1px white;
+            background-color: #9d0c00;
+            border-radius: 8px;
+            margin-top: 25px;
+          "
+          type="submit"
+          class="btn btn-dark"
+        >
+          Cadastrar
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
